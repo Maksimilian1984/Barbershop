@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Барбершоп "Бородинский"</title>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&display=swap&subset=cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="main-header">
     <nav class="main-navigation">
-        <a><img src="img/index-logo.svg" width="368" height="153" alt="Логотип барбершопа Бородинский"></a>
+        <a class="main-header-logo"><img src="img/index-logo.svg" width="368" height="153" alt="Логотип барбершопа Бородинский"
+          ></a>
+          <div class="main-navigation-wrapper">
+          <div class="container">
         <ul class="site-navigation">
             <li><a href="info.html">Информация</a></li>
             <li><a href="news.html">Новости</a></li>
@@ -21,7 +24,8 @@
         <ul class="user-navigation">
             <li class="login-link">Вход</li>
         </ul>
-
+      </div>
+      </div>
     </nav>
 
 </header>
@@ -49,6 +53,7 @@
             </li>
         </ul>
     </section>
+    <div class="index-columns">
     <section class="news">
         <h2>Новости</h2>
         <ul class="news-list">
@@ -62,8 +67,8 @@
             пополнил наши стройные ряды</p>
             <time datetime="2016-01-18">18 января</time>
             </li>
-            <a class="button" href="news.html">Все новости</a>
         </ul>
+        <a class="button" href="news.html">Все новости</a>
 
     </section>
     <section class="gallery">
@@ -72,10 +77,12 @@
             <a href="#"><img src="img/inerior.jpg" width="286" height="164" alt="Интерьер"></a>
 
         </figure>
-        <span class="button gallery-button gallery-button-back">Назад</span>
-        <span class="button gallery-button gallery-button-next">Вперед</span>
+        <button class="button gallery-button gallery-button-back">Назад</button>
+        <button class="button gallery-button gallery-button-next">Вперед</button>
 
     </section>
+  </div>
+  <div class="index-columns">
     <section class="contacts">
         <h2>Контактная информация</h2>
         <p>Барбершоп Бородинский<br>
@@ -93,9 +100,28 @@
         <h2>Записаться</h2>
         <p class="appointment-info">Укажите желаемую дату и время
             и мы свяжемся с вами для подтверждения бронирования</p>
-        <!--Здесь будет форма -->
+        <form class="appointment-form" action="https://echo.htmlacademy.ru">
+          <p class="appointment-item">
+            <label for="appointment-date" >Дата</label>
+            <input id="appointment-date" type="text" name="date" value="08.10.2017">
+          </p>
+          <p class="appointment-item">
+            <label for="appointment-time">Время</label>
+            <input id="appointment-time" type="text" name="time" value="10:00">
+          </p>
+          <p class="appointment-item">
+            <label for="appointment-name">Ваше имя</label>
+            <input id="appointment-name" type="text" name="name" value="Борода">
+          </p>
+          <p class="appointment-item">
+            <label for="appointment-phone">Телефон</label>
+            <input id="appointment-phone" type="tel" name="phone" value="+79064294998">
+          </p>
+        </form>
+ </div>
     </section>
     <footer class="main-footer">
+      <div class="container">
         <p class="footer-contacts">Барбершоп Бородинский<br>
             Адрес: г.Санкт-Петербург, Б. Конбшенная, д.19/8<br>
 
@@ -103,27 +129,45 @@
         Телефон: +7(906)429-49-98</p>
         <div class="footer-social">
         <b>Давайте дружить!</b>
-
             <ul>
-               <li> <a class="social-button" href="#">Вконтакте</a></li>
+            <li> <a class="social-button" href="#">Вконтакте</a></li>
             <li><a class="social-button" href="#">Фэйсбук</a></li>
             <li><a class="social-button" href="#">Инстаграмм</a></li>
             </ul>
         </div>
-        <p>
+        <p class="footer-copyright">
             <b>Разработано:</b>
             <a class="button" href="https://htmlacademy.ru">HTML Academy</a>
         </p>
+      </div>
     </footer>
     <section class="modal modal-login">
         <h2>Личный кабинет</h2>
-        <p>Введите свой логин и пароль</p>
-        <!--Здесь будет форма-->
-        <span class="modal-close">x</span>
+        <p>Введите пожайлуста свой логин и пароль</p>
+        <form class="login-form" action="https://echo.htmlacademy.ru">
+          <p class="input-password">
+            <label class="visuali-hidden" for="login">Логин</label>
+            <input class="login-icon-user" id="login" type="text" name="login"  placeholder="Логин">
+          </p>
+          <p class="input-password">
+            <label class="visuali-hidden" for="password">Пароль</label>
+            <input class="login-icon-password" id="password" type="password" name="password"  placeholder="Пароль">
+          </p>
+          <p class="login-password-info">
+            <label class="login-checkbox">
+              <input type="checkbox" name="remember" class="visuali-hidden">
+              <span class="checkbox-indicator"></span>
+              Запомните меня
+            </label>
+            <a class="restore" href="#">Я забыл пароль</a>
+          </p>
+          <button class="button" type="submit">Войти</button>
+          <button class="modal-close" type="button">Звкрыть</button>
     </section>
     <section class="modal modal-map">
         <h2 class="visuali-hidden">Как до нас добраться</h2>
         <span class="modal-close">x</span>
+        <img src="img/map.jpg" alt="Карта">
 
     </section>
 
