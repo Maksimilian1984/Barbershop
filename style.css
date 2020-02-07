@@ -23,11 +23,18 @@ body {
   background-position: 0 0;
   background-repeat: repeat;
 }
+img {
+  width: 100%;
+  height: auto;
+}
 
 a {
   text-decoration: none;
 }
 .button {
+  display: inline-block;
+  padding: 10px 30px;
+  margin-right: 16px;
   font: inherit;
 
   text-align: center;
@@ -43,11 +50,17 @@ a {
 .button:active {
   background-color: #663d15;
 }
+.button.disabled,
+.button:disabled {
+  cursor: default;
+  opacity: 0.5;
+  background-color: #000000;
+}
 .main-navigation {
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  background-color: #000000;
+  background-color: transparent;
 }
 .site-navigation,
 .user-navigation {
@@ -57,12 +70,6 @@ a {
 .user-navigation a {
 color: #ffffff;
 }
-.site-navigation:hover a,
-.site-navigation:focus a,
-.user-navigation:hover a,
-.user-navigation:focus a{
-  background-color: #242424;
-}
 .features-list {
   list-style: none;
 }
@@ -70,45 +77,138 @@ color: #ffffff;
   text-align: center;
 }
 .feature-item h3 {
+  position: relative;
   font-size: 30px;
   line-height: 42px;
+  margin: 0;
+  margin-bottom: 60px;
+}
+.feature-item h3::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  transform: rotate(45deg);
+}
+.feature-item p {
+  margin: 0 10px;
 }
 .index-columns {
   color: #000000;
   background-color: #fbf8f5;
-  background-image: url("img/pattern-light.jpg");
-  background-position: 0 0;
-  background-repeat: repeat;
+  background-image:
+  url("img/background2.png"),
+  url("img/pattern-light.jpg");
+  background-position: center, 0 0;
+  background-repeat: no-repeat, repeat;
 }
 .index-columns h2 {
   font-size: 30px;
   line-height: 42px;
+  margin: 0;
+  margin-bottom: 25px;
 }
 .news-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+.news-item {
+  margin-bottom: 25px;
+}
+.news-item p {
+  margin: 0;
+}
+
 .news-item time {
   text-transform: none;
 }
 .gallery-content {
+  height: 164px;
+  margin: 0;
   background-color: #cccccc;
   border: 7px solid #ffffff;
 }
+.gallery-container {
+  position: relative;
+  height: 260px;
+}
+.gallery-button {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+
+  width: 140px;
+  margin: 0;
+}
+.gallery-button-back {
+
+  left: 0;
+}
+.gallery-button-next {
+  right: 0;
+}
+.contacts p {
+  margin: 0;
+  margin-bottom: 25px;
+}
+.appointment-item {
+  width: 140px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.appointment-item label {
+  display: block;
+  margin-bottom: 9px;
+  margin-left: 15px;
+}
 .appointment-item input {
+  box-sizing: border-box;
+  width: 140px;
+  padding-top: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 7px;
   font: inherit;
-  background-color: transporent;
+  background-color: transparent;
   border: 2px solid #000000;
+}
+.appointment-info {
+  margin: 0;
+  margin-bottom: 15px;
+}
+.appointment-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .appointment-item input:focus {
   border-color: #663d15;
+}
+.appointment .button {
+  width: 100%;
+  margin: 0;
 }
 .page-title {
   font-size: 30px;
   line-height: 42px;
 }
+
+/*стили для хлебных крошок*/
+
+
 .breadcrambs {
   list-style:none;
+  display: flex;
 }
+.breadcrambs li {
+  margin-right: 40px;
+}
+
 .breadcrambs a {
   color: #000000;
 }
@@ -118,6 +218,12 @@ color: #ffffff;
 }
 .breadcrumbs-current {
   color: #aba9a7;
+}
+.breadcrambs li::after {
+ content: "";
+ width: 8px;
+ height: 8px;
+ background-color: #000000;
 }
 .filter fieldset {
   border: none;
@@ -214,12 +320,46 @@ color: #ffffff;
 
 .footer-social  ul {
   list-style: none;
+  display: flex;
+  width: 141px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
+}
+.footer-social b {
+  display: block;
+  margin: 0;
+  margin-bottom: 15px;
 }
 .social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
   color: #ffffff;
+  background-color: #000000;
+}
+.social-button:hover,
+.social-button:focus {
+  background-color: #ffffff;
+}
+.social-button:hover path,
+.social-button:focus path {
+  fill: #000000;
 }
 .footer-copyright {
   text-align: center;
+  margin: 0;
+}
+.footer-copyright .button {
+  display: block;
+  margin-right: 0;
+}
+.footer-copyright b {
+  display: block;
+  margin-bottom: 15px;
 }
 .footer-copyright .button:hover,
 .footer-copyright .button:focus {
@@ -316,24 +456,67 @@ color: #ffffff;
 .main-header {
   margin-bottom: 75px;
 }
+
+
 .main-header-logo {
   width: 368px;
   height: 153px;
-  order: 1;
+  order: 10;
 }
 .site-navigation {
   width: 620px;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.site-navigation a,
+.user-navigation a {
+  display: block;
+  padding: 25px 20px;
+  vertical-align: middle;
+  color: #ffffff;
+}
+.site-navigation a:hover,
+.site-navigation a:focus,
+.user-navigation a:hover,
+.user-navigation a:focus {
+  background-color: #242424;
 }
 
 .user-navigation {
-  width: 140px;
+  display: flex;
+  max-width: 140px;
   margin: 0;
   padding: 0;
 }
+.user-navigation .login-link {
+  position: relative;
+}
+.user-navigation a {
+padding-left: 50px;
+
+}
+.login-link::before {
+  position: absolute;
+  top:26px;
+  left: 24px;
+  content: "";
+  width: 16px;
+  height: 18px;
+  background-image: url("img/login.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+
+  opacity: 0.3;
+}
+.login-link:hover::before,
+.login-link:focus::before,
+.login-link:active::before {
+
+  opacity: 1;
+}
+
 .main-navigation {
   display: flex;
   flex-direction: column;
@@ -363,6 +546,7 @@ color: #ffffff;
 }
 .feature-item {
   width: 300px;
+  text-align: center;
 }
 .features {
   margin-bottom: 80px;
@@ -391,6 +575,7 @@ color: #ffffff;
 }
 .main-footer .container {
   display: flex;
+  box-sizing: border-box;
 }
 .footer-contacts  {
   width: 320px;
@@ -450,10 +635,10 @@ justify-content: space-between;
   margin-bottom: 20px;
   margin-right: 20px;
 }
-.catalog-item:nth-child(4) {
+.catalog-item:nth-child(3) {
   margin-right: 0px;
 }
-.catalog-item:nth-child(7) {
+.catalog-item:nth-child(6) {
   margin-right: 0px;
 }
 
@@ -463,5 +648,187 @@ justify-content: space-between;
 
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.pagination-list {
+  margin: 0;
+  padding: 0;
+}
+.inner-page .main-footer {
+  margin-top: 45px;
+}
+.product-fotos {
+  width: 460px;
+}
+.product-info {
+  width: 390px;
+}
+.means-advantage {
+  width: 390px;
+}
+.location-prices {
+  width: 460px;
+}
+.slogan {
+  margin-bottom: 70px;
+  text-align: center;
+}
 
+.visuali-hidden:not(:focus):not(:active),
+input[type="checkbox"].visuali-hidden,
+input[type="radio"].visuali-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/*слили для модалки*/
+
+ .modal-login {
+  display: none;
+  position: fixed;
+  top: 120px;
+  left: 366.5px;
+  width: 460px;
+  margin-left: 60px;
+  padding: 0 80px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  z-index: 100;
+  pointer-events: none;
+
+ }
+
+.modal-login h2 {
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: 25px;
+}
+.modal-login p {
+  position: relative;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.login-icon-user,
+.login-icon-password {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  padding-right: 40px;
+}
+.input-login::after {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: url("img/user.svg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+}
+.input-password::after {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: url("img/lock.svg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.login-password-info {
+margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.login-password-info span {
+  margin: 0;
+  padding: 0;
+  margin-left: 33px;
+}
+.login-password-info span::before {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+}
+.login-password-info input:checked ~ span::before {
+  background-image: url("img/cross check.svg");
+  background-repeat: no-repeat;
+  background-position: 2px 2px;
+}
+.login-form .button  {
+width: 300px;
+margin-bottom: 60px;
+}
+.modal-close {
+  position: absolute;
+  right: -33px;
+  top: 10px;
+  margin: 0;
+  padding: 0;           /*вернуть transparent и убрать светлый фон*/
+  width: 23px;
+  height: 23px;
+  background-color: #f7f4f1;
+  border: none;
+  outline: none;
+
+}
+.modal-close pach {   /*разобраться почему не меняется цвет */
+  fill: #f7f4f1;
+}
+.modal-login:target  {
+  display: block;
+  pointer-events: auto;
+}
+
+/*стили для модалки карты*/
+
+.modal-map {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 200px;
+  width: 780px;          /* нижний отступ больше остальных почему?*/
+  box-sizing: border-box;
+  padding: 7px;
+  pointer-events: none;
+}
+.modal-map img {
+  display: block;
+  width: 766px;
+  height: 560px;
+  margin: 0;
+  padding: 0;
+}
+.modal-close-map {
+  position: absolute;
+  top: 10px;
+  right: -33px;
+
+  margin: 0;
+  padding: 0;           /*вернуть transparent и убрать светлый фон*/
+  width: 23px;
+  height: 23px;
+  background-color: #f7f4f1;
+  border: none;
+  outline: none;
+}
+
+.modal-map:target {
+  display: block;
+  pointer-events: auto;
 }
