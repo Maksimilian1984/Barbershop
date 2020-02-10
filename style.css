@@ -219,21 +219,44 @@ color: #ffffff;
 .breadcrumbs-current {
   color: #aba9a7;
 }
-.breadcrambs li::after {
- content: "";
- width: 8px;
- height: 8px;
- background-color: #000000;
+.breadcrambs li:not(.breadcrumbs-current)::after
+ {
+  display: inline-block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
+  transform: translate(20px) rotate(45deg);
 }
+
+/*стили для фильтров*/
+
+
 .filter fieldset {
   border: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 53px;
 }
 .filter legend {
   font-size: 24px;
   line-height: 30px;
+  margin-bottom: 35px;
 }
 .filter ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 46px;
+}
+.filter li {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+.fieldset-manufacturer li:nth-of-type(6),
+.fieldset-product li:nth-of-type(3){
+  margin-bottom: 0;
 }
 .filter input:hover+label,
 .filter input:focus+label {
@@ -244,10 +267,58 @@ color: #ffffff;
 
   opacity: 0.5;
 }
+.filter label {
+  position: relative;
+
+}
+.fieldset-manufacturer label::before {
+  position: absolute;
+  left: -46px;
+  top: -3px;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid #000000;
+}
+
+.fieldset-manufacturer input:checked+label::before {
+  background-image: url("img/cross check.svg");
+  background-repeat:  no-repeat;
+  background-position: center center;
+}
+.fieldset-product label::before {
+  position: absolute;
+  left: -46px;
+  top: -3px;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 7px solid #f7f4f1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #000000;
+}
+.fieldset-product input:checked+label::before {
+  background-color: #000000;
+}
+
+/*стили для карточек товаров*/
+
+
 .catalog-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
+
+
+
 .catalog-item {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #f7f7f7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -257,29 +328,69 @@ color: #ffffff;
 .catalog-item a {
   color: #000000;
 }
+.catalog-item-image {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+  order: -1;
+}
 .catalog-item h3 {
   font-size: 14px;
   line-height: 18px;
+  margin: 0px 17px;
+  margin-bottom: 16px;
 }
 .catalog-category {
   text-transform: none;
 }
+.catalog-item-price {
+  display: flex;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  margin-left: 17px;
+  margin-right: 17px;
+  margin-bottom: 17px;
+
+}
 .catalog-item-price b {
+  display: inline-block;
   font-size: 14px;
+  flex-grow: 3;
   line-height: 20px;
   text-align: center;
+  padding: 10px 0px;
 
   background-color: #e5e5e5;
 }
 .catalog-item-price .button {
+  display: inline-block;
+  flex-grow: 1;
   line-height: 20px;
   color: #ffffff;
+  margin-right: 0;
+  padding: 10px 5px;
 }
+
+
 .pagination-list {
+  display: flex;
   list-style: none;
 }
+
+.pagination-item {
+margin-right: 7px;
+
+
+}
 .pagination-item a {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 12.5px 18px;
+
   color: #ffffff;
+  text-align: center;
 
   background-color: #000000;
 }
@@ -298,6 +409,10 @@ color: #ffffff;
 .pagination-item-current a:active {
   background-color: #663d15;
 }
+
+
+
+
 .main-footer {
   color: #ffffff;
 
@@ -415,6 +530,7 @@ color: #ffffff;
 .product-article {
   color: #aeaeae;
   text-align: right;
+  margin: 0;
 }
 .product-price b {
   line-height: 20px;
@@ -642,14 +758,6 @@ justify-content: space-between;
   margin-right: 0px;
 }
 
-.catalog-list {
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 25px;
-}
 .pagination-list {
   margin: 0;
   padding: 0;
@@ -660,19 +768,166 @@ justify-content: space-between;
 .product-fotos {
   width: 460px;
 }
+.product-fotos ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.product-foto-full {
+  margin: 0;
+  margin-bottom: 20px;
+}
+.product-foto-full img {
+  display: block;
+}
+.product-foto-preview img {
+  display: block;
+  width: 140px;
+  height: 149px;
+}
+
 .product-info {
   width: 390px;
 }
+.product-info div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-bottom: 35px;
+
+}
+.product-info h3 {
+  margin: 0;
+  margin-bottom: 30px;
+}
+.product-info ul {
+  margin: 0;
+  padding: 0;
+}
+.product-info  li {
+  position: relative;
+  margin-bottom: 5px;
+  padding-left: 22px;
+}
+.product-info  li::before {
+  position: absolute;
+  top: 7px;
+  left: 2px;
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
+  transform: rotate(45deg);
+}
+
 .means-advantage {
   width: 390px;
 }
+.product-availability {
+  margin: 0;
+}
+.product-text {
+  margin: 0;
+  margin-bottom: 35px;
+}
+.product-price {
+  display: flex;
+  width: 187px;
+  margin: 0;
+  margin-bottom: 60px;
+}
+.product-price b {
+  display: block;
+  flex-grow: 2;
+  padding: 10px 0px;
+  line-height: 24px;
+  text-align: center;
+}
+.product-price .button {
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
 .location-prices {
   width: 460px;
 }
 .slogan {
+  position: relative;
   margin-bottom: 70px;
   text-align: center;
 }
+.slogan::before,
+.slogan::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 160px;
+  height: 2px;
+  background-color: #000000;
+}
+.slogan::before {
+  right: 0;
+  top: 21px;
+}
+.slogan::after {
+  left: 0;
+  top: 21px;
+}
+.means-advantage h3 {
+  margin: 0;
+  margin-bottom: 35px;
+}
+.means-advantage ul {
+  margin: 0;
+  margin-bottom: 65px;
+  padding: 0;
+  list-style: none;
+}
+.means-advantage li {
+  position: relative;
+  margin: 0;
+  margin-bottom: 15px;
+  padding-left: 22px;
+}
+.means-advantage li::before {
+  position: absolute;
+  top: 7px;
+  left: 2px;
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
+  transform: rotate(45deg);
+}
+
+.means-advantage p {
+  margin: 0;
+  margin-bottom: 80px;
+}
+.location-prices h3 {
+  margin: 0;
+  margin-bottom: 40px;
+}
+.location-prices td {
+  width: 230px;
+  height: 40px;
+}
+.location-prices td:nth-of-type(3n-2) {
+  padding-left: 20px;
+}
+.location-prices td:nth-of-type(2n) {
+  text-align: center;
+}
+.table-price {
+  margin-bottom: 132px;
+}
+
 
 .visuali-hidden:not(:focus):not(:active),
 input[type="checkbox"].visuali-hidden,
